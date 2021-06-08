@@ -2,7 +2,15 @@ import axios from 'axios';
 
 const api = process.env.REACT_APP_API;
 
-const token = JSON.parse(localStorage.getItem('user')).token;
+//const token = JSON.parse(localStorage.getItem('user')).token;
+const token = () => {
+  if (localStorage.getItem('user') === null) {
+    return null;
+  } else {
+    return JSON.parse(localStorage.getItem('user')).token;
+  }
+}
+
 const options = {
   headers: {
     'x-access-token': token,
